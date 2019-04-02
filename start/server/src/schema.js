@@ -58,7 +58,7 @@ const typeDefs = gql`
     SMALL
     LARGE
   }
-
+  # Schema Type Mutation
   type Mutation {
     # if false, booking trips failed -- check errors
     bookTrips(launchIds: [ID]!): TripUpdateResponse!
