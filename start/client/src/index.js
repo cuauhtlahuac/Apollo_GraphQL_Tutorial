@@ -25,6 +25,25 @@ ReactDOM.render(
   document.getElementById("root")
 );
 
+const client = new ApolloClient({
+  cache,
+  link: new HttpLink({
+    uri: "http://localhost:4000/graphql",
+    headers: {
+      authorization: localStorage.getItem("token")
+    }
+  }),
+  resolvers,
+  typeDefs
+});
+
+cache.writeData({
+  data: {
+    isLoggedIn: !!localStorage.getItem("token"),
+    cartItems: []
+  }
+});
+
 // ... above is the instantiation of the client object.
 // client
 //   .query({
